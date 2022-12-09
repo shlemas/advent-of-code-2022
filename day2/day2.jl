@@ -50,9 +50,9 @@ function play(choice1::Choice, choice2::Choice)
     return Int(choice2) + Int(outcome)
 end
 
-function part1(io)
+function part1(filename)
     score = 0
-    for line in eachline(io)
+    for line in eachline(filename)
         player1, player2 = split(line)
         choice1 = to_strategy[player1]
         choice2 = to_strategy[player2]
@@ -61,9 +61,9 @@ function part1(io)
     return score
 end
 
-function part2(io)
+function part2(filename)
     score = 0
-    for line in eachline(io)
+    for line in eachline(filename)
         player1, player2 = split(line)
         desired_outcome = to_outcome[player2]
         choice1 = to_strategy[player1]
@@ -73,7 +73,7 @@ function part2(io)
     return score
 end
 
-function day2(io)
-    println(part1(io))
-    println(part2(io))
+function day2(filename)
+    println(part1(filename))
+    println(part2(filename))
 end

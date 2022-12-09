@@ -1,6 +1,6 @@
-function read_elves(io)
+function read_elves(filename)
     elves = []
-    for line in eachline(io)
+    for line in eachline(filename)
         if isempty(elves) || isempty(line)
             push!(elves, [])
         end
@@ -20,8 +20,8 @@ function part2(elves)
     return sum(sort(map(sum, elves), rev=true)[1:3])
 end
 
-function day1(io)
-    elves = read_elves(io)
+function day1(filename)
+    elves = read_elves(filename)
     println(part1(elves))
     println(part2(elves))
 end
