@@ -1,6 +1,4 @@
-lower = collect(zip(['a':1:'z';], [1:1:26;]))
-upper = collect(zip(['A':1:'Z';], [27:1:52;]))
-priority = Dict(t[1] => t[2] for t in (lower..., upper...))
+priority = Dict(zip(['a':'z'; 'A':'Z'], 1:52))
 
 function part1(filename)
     score = 0
