@@ -31,9 +31,4 @@ function part2(filename)
     return score
 end
 
-function day3(filename)
-    println(part1(filename))
-    println(part2(filename))
-end
-
 end  # module

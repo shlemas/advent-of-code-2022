@@ -24,9 +24,4 @@ function part2(filename)
     return sum(sort(map(sum, elves), rev=true)[1:3])
 end
 
-function day1(filename)
-    println(part1(filename))
-    println(part2(filename))
-end
-
 end  # module
