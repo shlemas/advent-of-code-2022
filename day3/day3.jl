@@ -30,6 +30,6 @@ function part2(filename)
 end
 
 function day3(filename)
-    println(part1(filename))
-    println(part2(filename))
+    println(part1(filename))  # 7863
+    println(part2(filename))  # 2488
 end

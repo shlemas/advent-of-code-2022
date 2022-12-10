@@ -22,6 +22,6 @@ end
 
 function day1(filename)
     elves = read_elves(filename)
-    println(part1(elves))
-    println(part2(elves))
+    println(part1(elves))  # 70509
+    println(part2(elves))  # 208567
 end

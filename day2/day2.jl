@@ -74,6 +74,6 @@ function part2(filename)
 end
 
 function day2(filename)
-    println(part1(filename))
-    println(part2(filename))
+    println(part1(filename))  # 13675
+    println(part2(filename))  # 14184
 end
