@@ -27,12 +27,8 @@ losing_strategy = Dict(value => key for (key, value) in winning_strategy)
 function determine_outcome(choice1::Choice, choice2::Choice)::Outcome
     if choice1 == choice2
         return draw
-    elseif (choice1, choice2) == (scissors, rock)
-        return win
-    elseif ((choice1, choice2) != (rock, scissors)) && (choice2 > choice1)
-        return win
     end
-    return loss
+    return (winning_strategy[choice1] == choice2) ? win : loss
 end
 
 function fix_outcome(choice1::Choice, desired_outcome::Outcome)::Choice
