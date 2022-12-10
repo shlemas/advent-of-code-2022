@@ -1,5 +1,7 @@
 module Day2
 
+export part1, part2
+
 @enum Choice rock=1 paper=2 scissors=3
 @enum Outcome loss=0 draw=3 win=6
 

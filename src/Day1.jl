@@ -1,5 +1,7 @@
 module Day1
 
+export part1, part2
+
 function read_elves(filename)
     elves = []
     for line in eachline(filename)

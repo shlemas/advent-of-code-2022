@@ -1,5 +1,7 @@
 module Day3
 
+export part1, part2
+
 priority = Dict(zip(['a':'z'; 'A':'Z'], 1:52))
 
 function part1(filename)
