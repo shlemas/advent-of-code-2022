@@ -1,3 +1,5 @@
+module Day2
+
 @enum Choice rock=1 paper=2 scissors=3
 @enum Outcome loss=0 draw=3 win=6
 
@@ -70,6 +72,8 @@ function part2(filename)
 end
 
 function day2(filename)
-    println(part1(filename))  # 13675
-    println(part2(filename))  # 14184
+    println(part1(filename))
+    println(part2(filename))
 end
+
+end  # module

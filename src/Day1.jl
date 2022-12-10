@@ -1,3 +1,5 @@
+module Day1
+
 function read_elves(filename)
     elves = []
     for line in eachline(filename)
@@ -12,16 +14,19 @@ function read_elves(filename)
     return elves
 end
 
-function part1(elves)
+function part1(filename)
+    elves = read_elves(filename)
     return maximum(map(sum, elves))
 end
 
-function part2(elves)
+function part2(filename)
+    elves = read_elves(filename)
     return sum(sort(map(sum, elves), rev=true)[1:3])
 end
 
 function day1(filename)
-    elves = read_elves(filename)
-    println(part1(elves))  # 70509
-    println(part2(elves))  # 208567
+    println(part1(filename))
+    println(part2(filename))
 end
+
+end  # module

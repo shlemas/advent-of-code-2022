@@ -1,3 +1,5 @@
+module Day3
+
 priority = Dict(zip(['a':'z'; 'A':'Z'], 1:52))
 
 function part1(filename)
@@ -30,6 +32,8 @@ function part2(filename)
 end
 
 function day3(filename)
-    println(part1(filename))  # 7863
-    println(part2(filename))  # 2488
+    println(part1(filename))
+    println(part2(filename))
 end
+
+end  # module
