@@ -17,14 +17,13 @@ function add_file(dir, name, size)
     end
 end
 
-function find_dirs(dir::Directory, predicate)
-    result = []
+function find_dirs(dir::Directory, predicate, result=[])
     if predicate(dir)
         push!(result, dir)
     end
     for child in values(dir.children)
         if isa(child, Directory)
-            append!(result, find_dirs(child, predicate))
+            find_dirs(child, predicate, result)
         end
     end
     return result
