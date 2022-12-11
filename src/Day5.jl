@@ -35,6 +35,7 @@ function parse_file(filename)
     file = open(filename, "r")
     stacks = parse_crates(file)
     moves = parse_moves(file)
+    close(file)
     return stacks, moves
 end
 
