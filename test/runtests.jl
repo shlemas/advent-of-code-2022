@@ -13,3 +13,6 @@ using Test
 
 @test AdventOfCode.Day4.part1("day4-input.txt") == 542
 @test AdventOfCode.Day4.part2("day4-input.txt") == 900
+
+@test AdventOfCode.Day5.part1("day5-input.txt") == "VPCDMSLWJ"
+@test AdventOfCode.Day5.part2("day5-input.txt") == "TPWCGNCCG"
