@@ -32,30 +32,20 @@ function pull_rope(moves, num_knots)
                 right = (knots[i][2] - knots[i+1][2] >  1)
                 left  = (knots[i][2] - knots[i+1][2] < -1)
 
-                if up && right
+                if up
                     knots[i+1][1] = knots[i][1] - 1
-                    knots[i+1][2] = knots[i][2] - 1
-                elseif up && left
-                    knots[i+1][1] = knots[i][1] - 1
-                    knots[i+1][2] = knots[i][2] + 1
-                elseif down && right
-                    knots[i+1][1] = knots[i][1] + 1
-                    knots[i+1][2] = knots[i][2] - 1
-                elseif down && left
-                    knots[i+1][1] = knots[i][1] + 1
-                    knots[i+1][2] = knots[i][2] + 1
-                elseif up
-                    knots[i+1][1] = knots[i][1] - 1
-                    knots[i+1][2] = knots[i][2]
                 elseif down
                     knots[i+1][1] = knots[i][1] + 1
-                    knots[i+1][2] = knots[i][2]
-                elseif right
+                elseif left || right
                     knots[i+1][1] = knots[i][1]
+                end
+
+                if right
                     knots[i+1][2] = knots[i][2] - 1
                 elseif left
-                    knots[i+1][1] = knots[i][1]
                     knots[i+1][2] = knots[i][2] + 1
+                elseif up || down
+                    knots[i+1][2] = knots[i][2]
                 end
             end
             amount -= 1
