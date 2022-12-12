@@ -8,7 +8,7 @@ end
 
 function pull_rope(moves, num_knots)
     knots = [[1,1] for _ in 1:num_knots]
-    tpos_history = Set([Tuple([1,1])])
+    tail_history = Set([Tuple([1,1])])
     for move in moves
         dir, amount = move
         while amount > 0
@@ -23,35 +23,38 @@ function pull_rope(moves, num_knots)
             end
             for i in eachindex(knots)
                 if i == lastindex(knots)
-                    push!(tpos_history, Tuple(knots[i]))
+                    push!(tail_history, Tuple(knots[i]))
                     break
                 end
 
-                up    = (knots[i][1] - knots[i+1][1] >  1)
-                down  = (knots[i][1] - knots[i+1][1] < -1)
-                right = (knots[i][2] - knots[i+1][2] >  1)
-                left  = (knots[i][2] - knots[i+1][2] < -1)
+                vertical_diff   = knots[i][1] - knots[i+1][1]
+                horizontal_diff = knots[i][2] - knots[i+1][2]
 
-                if up
-                    knots[i+1][1] = knots[i][1] - 1
-                elseif down
-                    knots[i+1][1] = knots[i][1] + 1
-                elseif left || right
+                pull_up    = (vertical_diff   >=  2)
+                pull_down  = (vertical_diff   <= -2)
+                pull_right = (horizontal_diff >=  2)
+                pull_left  = (horizontal_diff <= -2)
+
+                if pull_up
+                    knots[i+1][1] += 1
+                elseif pull_down
+                    knots[i+1][1] -= 1
+                elseif pull_left || pull_right
                     knots[i+1][1] = knots[i][1]
                 end
 
-                if right
-                    knots[i+1][2] = knots[i][2] - 1
-                elseif left
-                    knots[i+1][2] = knots[i][2] + 1
-                elseif up || down
+                if pull_right
+                    knots[i+1][2] += 1
+                elseif pull_left
+                    knots[i+1][2] -= 1
+                elseif pull_up || pull_down
                     knots[i+1][2] = knots[i][2]
                 end
             end
             amount -= 1
         end
     end
-    return length(tpos_history)
+    return length(tail_history)
 end
 
 function part1(filename)
