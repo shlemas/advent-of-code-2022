@@ -36,10 +36,10 @@ function execute!(cpu::CPU, instruction::AbstractInstruction)
     end
 end
 
-function read_instructions(filename)
+function read_instructions(filename)::Vector{AbstractInstruction}
     lines = readlines(filename)
     split_lines = map(split, lines)
-    instructions = []
+    instructions = Vector{AbstractInstruction}()
     for line in split_lines
         if line[1] == "addx"
             push!(instructions, AddXInstruction(parse(Int, line[2])))
@@ -52,13 +52,14 @@ function read_instructions(filename)
     return instructions
 end
 
-function signal_strength(cpu::CPU, cycle::Int)
+function signal_strength(cpu::CPU, cycle::Int)::Int
     return cpu.history[cycle] * cycle
 end
 
-function render_crt(cpu::CPU)
+function render_crt(cpu::CPU)::String
     scan_lines::Vector{Vector{Char}} = [[]]
-    line, pixel = 1, 0
+    line = 1
+    pixel = 0
     for x in cpu.history
         if pixel in (x-1):(x+1)
             push!(scan_lines[end], '#')
