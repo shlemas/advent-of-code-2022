@@ -41,3 +41,6 @@ using Test
 
 @test AdventOfCode.Day11.part1("day11-input.txt") == 99840
 @test AdventOfCode.Day11.part2("day11-input.txt") == 20683044837
+
+@test AdventOfCode.Day12.part1("day12-input.txt") == 394
+@test AdventOfCode.Day12.part2("day12-input.txt") == 388
