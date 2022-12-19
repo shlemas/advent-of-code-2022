@@ -2,52 +2,66 @@ module Day2
 
 export part1, part2
 
-@enum Choice rock=1 paper=2 scissors=3
-@enum Outcome loss=0 draw=3 win=6
+abstract type RockPaperScissors end
+struct Rock <: RockPaperScissors end
+struct Paper <: RockPaperScissors end
+struct Scissors <: RockPaperScissors end
+
+abstract type AbstractOutcome end
+struct Loss <: AbstractOutcome end
+struct Draw <: AbstractOutcome end
+struct Win <: AbstractOutcome end
+
+points(::Rock) = 1
+points(::Paper) = 2
+points(::Scissors) = 3
+points(::Loss) = 0
+points(::Draw) = 3
+points(::Win) = 6
+
+winning_strategy(::Rock) = Paper()
+winning_strategy(::Paper) = Scissors()
+winning_strategy(::Scissors) = Rock()
+
+losing_strategy(::Rock) = Scissors()
+losing_strategy(::Paper) = Rock()
+losing_strategy(::Scissors) = Paper()
 
 to_strategy = Dict(
-    "A" => rock,
-    "B" => paper,
-    "C" => scissors,
-    "X" => rock,
-    "Y" => paper,
-    "Z" => scissors,
+    "A" => Rock(),
+    "B" => Paper(),
+    "C" => Scissors(),
+    "X" => Rock(),
+    "Y" => Paper(),
+    "Z" => Scissors(),
 )
 
 to_outcome = Dict(
-    "X" => loss,
-    "Y" => draw,
-    "Z" => win,
+    "X" => Loss(),
+    "Y" => Draw(),
+    "Z" => Win(),
 )
 
-winning_strategy = Dict(
-    scissors => rock,
-    rock => paper,
-    paper => scissors,
-)
-
-losing_strategy = Dict(value => key for (key, value) in winning_strategy)
-
-function determine_outcome(choice1::Choice, choice2::Choice)::Outcome
+function determine_outcome(choice1::RockPaperScissors, choice2::RockPaperScissors)
     if choice1 == choice2
-        return draw
+        return Draw()
     end
-    return (winning_strategy[choice1] == choice2) ? win : loss
+    return (winning_strategy(choice1) == choice2) ? Win() : Loss()
 end
 
-function fix_outcome(choice1::Choice, desired_outcome::Outcome)::Choice
-    if desired_outcome == loss
-        return losing_strategy[choice1]
-    elseif desired_outcome == draw
+function fix_outcome(choice1::RockPaperScissors, desired_outcome::AbstractOutcome)
+    if desired_outcome == Loss()
+        return losing_strategy(choice1)
+    elseif desired_outcome == Draw()
         return choice1
-    elseif desired_outcome == win
-        return winning_strategy[choice1]
+    elseif desired_outcome == Win()
+        return winning_strategy(choice1)
     end
 end
 
-function play(choice1::Choice, choice2::Choice)
+function play(choice1::RockPaperScissors, choice2::RockPaperScissors)
     outcome = determine_outcome(choice1, choice2)
-    return Int(choice2) + Int(outcome)
+    return points(choice2) + points(outcome)
 end
 
 function part1(filename)
