@@ -4,37 +4,46 @@ export part1, part2
 
 abstract type AbstractInstruction end
 
-mutable struct AddXInstruction <: AbstractInstruction
+mutable struct Instruction <: AbstractInstruction
     cycles_remaining::Int
+end
+
+mutable struct AddXInstruction <: AbstractInstruction
+    instruction::Instruction
     value::Int
-    AddXInstruction(value) = new(2, value)
+    AddXInstruction(value) = new(Instruction(2), value)
 end
 
 mutable struct NoopInstruction <: AbstractInstruction
-    cycles_remaining::Int
-    NoopInstruction() = new(1)
+    instruction::Instruction
+    NoopInstruction() = new(Instruction(1))
 end
 
-const Register = Int
+finished(instruction::Instruction) = return instruction.cycles_remaining <= 0
+finished(instruction::AbstractInstruction) = return finished(instruction.instruction)
 
+clock!(instruction::Instruction) = instruction.cycles_remaining -= 1
+clock!(instruction::AbstractInstruction) = return clock!(instruction.instruction)
+
+const Register = Int
 mutable struct CPU
     x::Register
     history::Vector{Register}
     CPU() = new(1, [1])
 end
 
-function side_effect!(::CPU, ::AbstractInstruction) end
-function side_effect!(cpu::CPU, instruction::AddXInstruction)
-    cpu.x += instruction.value
-end
+record_register!(cpu::CPU) = push!(cpu.history, cpu.x)
+
+side_effect!(::CPU, ::AbstractInstruction) = begin end
+side_effect!(cpu::CPU, instruction::AddXInstruction) = cpu.x += instruction.value
 
 function execute!(cpu::CPU, instruction::AbstractInstruction)
-    while instruction.cycles_remaining > 0
-        instruction.cycles_remaining -= 1
-        if instruction.cycles_remaining == 0
+    while !finished(instruction)
+        clock!(instruction)
+        if finished(instruction)
             side_effect!(cpu, instruction)
         end
-        push!(cpu.history, cpu.x)
+        record_register!(cpu)
     end
 end
 
@@ -54,9 +63,7 @@ function read_instructions(filename)::Vector{AbstractInstruction}
     return instructions
 end
 
-function signal_strength(cpu::CPU, cycle::Int)::Int
-    return cpu.history[cycle] * cycle
-end
+signal_strength(cpu::CPU, cycle::Int)::Int = return cpu.history[cycle] * cycle
 
 function render_crt(cpu::CPU)::String
     scan_lines::Vector{Vector{Char}} = [[]]
