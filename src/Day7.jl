@@ -6,6 +6,7 @@ mutable struct Directory
     parent::Union{Nothing, Directory}
     children::Dict{String, Union{Directory, Int}}
     size::Int
+
     Directory(parent=nothing) = new(parent, Dict(), 0)
 end
 

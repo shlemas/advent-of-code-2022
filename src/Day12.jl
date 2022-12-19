@@ -9,6 +9,20 @@ struct Peak
     vertex::Int
     starting::Bool
     target::Bool
+
+    function Peak(char, vertex)
+        elevation = char
+        starting = false
+        target = false
+        if char == 'S'
+            elevation = 'a'
+            starting = true
+        elseif char == 'E'
+            elevation = 'z'
+            target = true
+        end
+        return new(elevation, vertex, starting, target)
+    end
 end
 
 function read_peaks(filename)
@@ -19,17 +33,7 @@ function read_peaks(filename)
     vertex = 1
     for (row, line) in enumerate(lines)
         for (col, char) in enumerate(line)
-            elevation = char
-            starting = false
-            target = false
-            if char == 'S'
-                elevation = 'a'
-                starting = true
-            elseif char == 'E'
-                elevation = 'z'
-                target = true
-            end
-            peaks[row, col] = Peak(elevation, vertex, starting, target)
+            peaks[row, col] = Peak(char, vertex)
             vertex += 1
         end
     end

@@ -9,6 +9,10 @@ mutable struct Monkey
     true_monkey::Int
     false_monkey::Int
     num_inspections::Int
+
+    function Monkey(items, operation, test_divisor, true_monkey, false_monkey)
+        return new(items, operation, test_divisor, true_monkey, false_monkey, 0)
+    end
 end
 
 function read_starting_items(line)::Vector{Int}
@@ -54,7 +58,6 @@ function read_monkeys(filename)
             read_test_divisor(section[4]),
             read_outcome(section[5]),
             read_outcome(section[6]),
-            0
         )
         push!(monkeys, monkey)
     end
