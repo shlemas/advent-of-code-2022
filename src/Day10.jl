@@ -1,5 +1,7 @@
 module Day10
 
+export part1, part2
+
 abstract type AbstractInstruction end
 
 mutable struct AddXInstruction <: AbstractInstruction

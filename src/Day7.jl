@@ -1,5 +1,7 @@
 module Day7
 
+export part1, part2
+
 mutable struct Directory
     parent::Union{Nothing, Directory}
     children::Dict{String, Union{Directory, Int}}
@@ -7,7 +9,7 @@ mutable struct Directory
     Directory(parent=nothing) = new(parent, Dict(), 0)
 end
 
-function add_file(dir, name, size)
+function add_file!(dir, name, size)
     if !haskey(dir.children, name)
         dir.children[name] = size
         while dir !== nothing
@@ -44,7 +46,7 @@ function build_dirs(commands)
             end
         elseif (m = match(r"(\d+) (.+)", command)) !== nothing
             file_size, file_name = m.captures
-            add_file(cd, file_name, parse(Int, file_size))
+            add_file!(cd, file_name, parse(Int, file_size))
         end
     end
     return root

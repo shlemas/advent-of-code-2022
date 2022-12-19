@@ -1,5 +1,7 @@
 module Day11
 
+export part1, part2
+
 mutable struct Monkey
     items::Vector{Int}
     operation::Tuple{Function, Any}

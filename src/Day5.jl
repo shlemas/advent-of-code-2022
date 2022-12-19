@@ -1,5 +1,7 @@
 module Day5
 
+export part1, part2
+
 function parse_crates(file)
     stacks = []
     for line in eachline(file)

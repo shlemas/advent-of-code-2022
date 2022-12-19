@@ -1,7 +1,8 @@
 module Day12
 
+export part1, part2
+
 using Graphs
-using GraphPlot
 
 struct Peak
     elevation::Char

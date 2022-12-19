@@ -1,5 +1,7 @@
 module Day4
 
+export part1, part2
+
 function parse_sections(line::String)::Tuple{UnitRange, UnitRange}
     split_ints(section) = map(s -> parse(Int, s), map(String, split(section, "-")))
     section1, section2 = split(line, ",")

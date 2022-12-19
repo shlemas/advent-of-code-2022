@@ -1,5 +1,7 @@
 module Day8
 
+export part1, part2
+
 function read_trees(filename)
     lines = readlines(filename)
     width = length(lines[begin])

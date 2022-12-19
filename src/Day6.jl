@@ -1,5 +1,7 @@
 module Day6
 
+export part1, part2
+
 function read_until_unique(data, n)
     window = []
     for (i, char) in enumerate(data)
