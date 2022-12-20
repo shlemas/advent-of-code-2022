@@ -45,5 +45,13 @@ using Test
 @test AdventOfCode.Day12.part1("day12-input.txt") == 394
 @test AdventOfCode.Day12.part2("day12-input.txt") == 388
 
-# @test AdventOfCode.Day13.part1("day13-input.txt") == 
-# @test AdventOfCode.Day13.part2("day13-input.txt") == 
+@test AdventOfCode.Day13.lessthan([1,1,3,1,1], [1,1,5,1,1])
+@test AdventOfCode.Day13.lessthan([[1],[2,3,4]], [[1],4])
+@test !AdventOfCode.Day13.lessthan([9], [[8,7,6]])
+@test AdventOfCode.Day13.lessthan([[4,4],4,4], [[4,4],4,4,4])
+@test !AdventOfCode.Day13.lessthan([7,7,7,7], [7,7,7])
+@test AdventOfCode.Day13.lessthan([], [3])
+@test !AdventOfCode.Day13.lessthan([[[]]], [[]])
+@test !AdventOfCode.Day13.lessthan([1,[2,[3,[4,[5,6,7]]]],8,9], [1,[2,[3,[4,[5,6,0]]]],8,9])
+@test AdventOfCode.Day13.part1("day13-input.txt") == 5366
+@test AdventOfCode.Day13.part2("day13-input.txt") == 23391
