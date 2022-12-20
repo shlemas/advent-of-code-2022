@@ -29,13 +29,7 @@ function compare(left::Vector, right::Vector)
             return result
         end
     end
-    if length(left) < length(right)
-        return :less
-    elseif length(left) > length(right)
-        return :greater
-    else
-        return :equal
-    end
+    return compare(length(left), length(right))
 end
 
 compare(left::Int64, right::Vector) = return compare([left], right)
