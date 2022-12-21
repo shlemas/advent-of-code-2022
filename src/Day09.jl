@@ -1,4 +1,4 @@
-module Day9
+module Day09
 
 export part1, part2
 

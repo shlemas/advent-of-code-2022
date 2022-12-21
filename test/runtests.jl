@@ -2,32 +2,32 @@ import AdventOfCode
 
 using Test
 
-@test AdventOfCode.Day1.part1("day1-input.txt") == 70509
-@test AdventOfCode.Day1.part2("day1-input.txt") == 208567
+@test AdventOfCode.Day01.part1("day01-input.txt") == 70509
+@test AdventOfCode.Day01.part2("day01-input.txt") == 208567
 
-@test AdventOfCode.Day2.part1("day2-input.txt") == 13675
-@test AdventOfCode.Day2.part2("day2-input.txt") == 14184
+@test AdventOfCode.Day02.part1("day02-input.txt") == 13675
+@test AdventOfCode.Day02.part2("day02-input.txt") == 14184
 
-@test AdventOfCode.Day3.part1("day3-input.txt") == 7863
-@test AdventOfCode.Day3.part2("day3-input.txt") == 2488
+@test AdventOfCode.Day03.part1("day03-input.txt") == 7863
+@test AdventOfCode.Day03.part2("day03-input.txt") == 2488
 
-@test AdventOfCode.Day4.part1("day4-input.txt") == 542
-@test AdventOfCode.Day4.part2("day4-input.txt") == 900
+@test AdventOfCode.Day04.part1("day04-input.txt") == 542
+@test AdventOfCode.Day04.part2("day04-input.txt") == 900
 
-@test AdventOfCode.Day5.part1("day5-input.txt") == "VPCDMSLWJ"
-@test AdventOfCode.Day5.part2("day5-input.txt") == "TPWCGNCCG"
+@test AdventOfCode.Day05.part1("day05-input.txt") == "VPCDMSLWJ"
+@test AdventOfCode.Day05.part2("day05-input.txt") == "TPWCGNCCG"
 
-@test AdventOfCode.Day6.part1("day6-input.txt") == 1802
-@test AdventOfCode.Day6.part2("day6-input.txt") == 3551
+@test AdventOfCode.Day06.part1("day06-input.txt") == 1802
+@test AdventOfCode.Day06.part2("day06-input.txt") == 3551
 
-@test AdventOfCode.Day7.part1("day7-input.txt") == 1243729
-@test AdventOfCode.Day7.part2("day7-input.txt") == 4443914
+@test AdventOfCode.Day07.part1("day07-input.txt") == 1243729
+@test AdventOfCode.Day07.part2("day07-input.txt") == 4443914
 
-@test AdventOfCode.Day8.part1("day8-input.txt") == 1719
-@test AdventOfCode.Day8.part2("day8-input.txt") == 590824
+@test AdventOfCode.Day08.part1("day08-input.txt") == 1719
+@test AdventOfCode.Day08.part2("day08-input.txt") == 590824
 
-@test AdventOfCode.Day9.part1("day9-input.txt") == 6087
-@test AdventOfCode.Day9.part2("day9-input.txt") == 2493
+@test AdventOfCode.Day09.part1("day09-input.txt") == 6087
+@test AdventOfCode.Day09.part2("day09-input.txt") == 2493
 
 @test AdventOfCode.Day10.part1("day10-input.txt") == 13740
 @test AdventOfCode.Day10.part2("day10-input.txt") ==
