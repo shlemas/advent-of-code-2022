@@ -58,3 +58,8 @@ using Test
 
 @test AdventOfCode.Day14.part1("day14-input.txt") == 757
 @test AdventOfCode.Day14.part2("day14-input.txt") == 24943
+
+@test AdventOfCode.Day15.manhattan_distance((1,1), (1,1)) == 0
+@test AdventOfCode.Day15.manhattan_distance((1,2), (2,1)) == 2
+@test AdventOfCode.Day15.part1("day15-input.txt") == 6078701
+@test AdventOfCode.Day15.part2("day15-input.txt")
