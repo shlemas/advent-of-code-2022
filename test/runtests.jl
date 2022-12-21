@@ -55,3 +55,6 @@ using Test
 @test !AdventOfCode.Day13.lessthan([1,[2,[3,[4,[5,6,7]]]],8,9], [1,[2,[3,[4,[5,6,0]]]],8,9])
 @test AdventOfCode.Day13.part1("day13-input.txt") == 5366
 @test AdventOfCode.Day13.part2("day13-input.txt") == 23391
+
+@test AdventOfCode.Day14.part1("day14-input.txt") == 757
+@test AdventOfCode.Day14.part2("day14-input.txt") == 24943
