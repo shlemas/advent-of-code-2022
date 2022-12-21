@@ -3,7 +3,7 @@ module Day14
 export part1, part2
 
 mutable struct Grid
-    data::Matrix
+    data::Matrix{Char}
     has_floor::Bool
 
     function Grid(paths::Vector, has_floor=false)
@@ -34,7 +34,7 @@ mutable struct Grid
 end
 
 get_tile(grid::Grid, coord) = return grid.data[coord...]
-set_tile!(grid::Grid, coord, tile) = grid.data[coord...] = tile
+set_tile!(grid::Grid, coord, tile::Char) = grid.data[coord...] = tile
 is_within_grid(grid::Grid, coord) = return checkbounds(Bool, grid.data, coord...)
 is_blocking_tile(grid::Grid, coord) = return (get_tile(grid, coord) in ['#', 'o'])
 is_open_tile(grid::Grid, coord) = return (is_within_grid(grid, coord) && !is_blocking_tile(grid, coord))
